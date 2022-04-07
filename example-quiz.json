@@ -1,0 +1,32 @@
+[
+	{
+		"question": "What color is the sky?",
+		"options": ["Red", "Blue", "Yellow", "Purple"],
+		"submit": "I think I've got it!",
+		"answer": {
+			"index": 1,
+			"incorrect": "Not quite! The sky is actually blue!",
+			"correct": "Nice one! The sky is blue."
+		}
+	},
+	{
+		"question": "What's 5 * 20?",
+		"options": ["22", "120", "100", "102"],
+		"submit": "I'm feeling lucky!",
+		"answer": {
+			"index": 2,
+			"incorrect": "20 + 20 + 20 + 20 + 20 = 100",
+			"correct": "You're a math-wiz!"
+		}
+	},
+	{
+		"question": "Which of these doesn't contain bread?",
+		"options": ["Sandwich", "Cereal", "Pizza", "Hotdog"],
+		"submit": "I know this one!",
+		"answer": {
+			"index": 1,
+			"incorrect": "Cereal is just milk and sweets.",
+			"correct": "I sure hope you don't put bread in your cereal!"
+		}
+	}
+]
