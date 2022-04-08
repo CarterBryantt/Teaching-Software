@@ -45,7 +45,7 @@
 // let jsonQuiz = JSON.stringify(createQuiz());
 // downloadJSON(jsonQuiz, "new-quiz");
 
-fetch("./example-quiz.json").then(response => response.json()).then(jsondata => parseQuiz(jsondata));
+fetch("./config.json").then(response => response.json()).then(jsondata => parseQuiz(jsondata));
 
 let answerIndicies = [];
 let questions

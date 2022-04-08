@@ -28,5 +28,35 @@
 			"incorrect": "Cereal is just milk and sweets.",
 			"correct": "I sure hope you don't put bread in your cereal!"
 		}
+	},
+	{
+		"question": "How sexy is Carter?",
+		"options": ["Makes my knees weak", "Smokin' 🔥", "Eh hes alright", "I'd travel the world for that booty 😋"],
+		"submit": "This is lightweight!",
+		"answer": {
+			"index": 2,
+			"incorrect": "aw gosh",
+			"correct": ">:("
+		}
+	},
+	{
+		"question": "Who's the President",
+		"options": ["Your mom", "Joe Biden", "Chris Hemsworth", "Heck if I know"],
+		"submit": "I'd like to buy a vowel!",
+		"answer": {
+			"index": 1,
+			"incorrect": "Not quite silly goose.",
+			"correct": "You know your history"
+		}
+	},
+	{
+		"question": "How many fingers am I holding up?",
+		"options": ["2", "5", "3", "1"],
+		"submit": "Let's see those hands!",
+		"answer": {
+			"index": 0,
+			"incorrect": "✌️ Aw so close it was 2.",
+			"correct": "✌️ Nice! It was two!"
+		}
 	}
 ]
