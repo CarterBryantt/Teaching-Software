@@ -114,6 +114,7 @@ function updateQuiz() {
 
 		questions[i].style.display = "none";
 	}
+	window.scrollTo(0, document.body.scrollHeight);
 }
 
 function setup() {
