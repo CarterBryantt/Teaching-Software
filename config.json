@@ -1,32 +1,62 @@
 [
 	{
-		"question": "What color is the sky?",
-		"options": ["Red", "Blue", "Yellow", "Purple"],
+		"question": "What animal can clean its own ear with its tongue?",
+		"options": ["Giraffe", "Polar bear", "Cat", "Koala"],
+		"submit": "Shoot for the stars",
+		"answer": {
+			"index": 0,
+			"incorrect": "Giraffes can reach their ears with their 21 inch long tongue.",
+			"correct": "It's actually 21 inches long!"
+		}
+	},
+	{
+		"question": "What did the first vending machine dispense?",
+		"options": ["Crackers", "Chewing gum", "Holy water", "Pencils"],
 		"submit": "I think I've got it!",
 		"answer": {
-			"index": 1,
-			"incorrect": "Not quite! The sky is actually blue!",
-			"correct": "Nice one! The sky is blue."
+			"index": 2,
+			"incorrect": "Invented by Hero of Alexandria in the 1st CE, the first vending machine dispensed holy water.",
+			"correct": "Invented by Hero of Alexandria in the 1st CE, the first vending machine dispensed holy water."
 		}
 	},
 	{
-		"question": "What's 5 * 20?",
-		"options": ["22", "120", "100", "102"],
+		"question": "In a URL, what does 'www' stand for?",
+		"options": ["Wolf Wing Wound", "Wild Wishing Women", "Wrong Written Word", "World Wide Web"],
 		"submit": "I'm feeling lucky!",
 		"answer": {
-			"index": 2,
-			"incorrect": "20 + 20 + 20 + 20 + 20 = 100",
-			"correct": "You're a math-wiz!"
+			"index": 3,
+			"incorrect": "C'mon, almost everyone learns this in school nowdays. WWW = World Wide Web",
+			"correct": "You got it!"
 		}
 	},
 	{
-		"question": "Which of these doesn't contain bread?",
-		"options": ["Sandwich", "Cereal", "Pizza", "Hotdog"],
+		"question": "Pharaoh is the title given to the rulers of which ancient country?",
+		"options": ["Isreal", "Egypt", "Chad", "China"],
 		"submit": "I know this one!",
 		"answer": {
 			"index": 1,
-			"incorrect": "Cereal is just milk and sweets.",
-			"correct": "I sure hope you don't put bread in your cereal!"
+			"incorrect": "Nope, the answer is Egypt.",
+			"correct": "You're clever!"
+		}
+	},
+	{
+		"question": "How long have you known Carter?",
+		"options": ["7 years", "9 years", "8 years", "6 years"],
+		"submit":"Got it!",
+		"answer": {
+			"index": 2,
+			"incorrect": "Ooooh so close, 8 months.",
+			"correct": "Did you guess?"
+		}
+	},
+	{
+		"question": "A bit harder. How long have been dating Carter?",
+		"options": ["8 months", "10 months", "9 months", "7 months"],
+		"submit":"Got it!",
+		"answer": {
+			"index": 2,
+			"incorrect": "Fair enough, that one was hard. 9 months.",
+			"correct": "Nicely done."
 		}
 	},
 	{
@@ -76,7 +106,7 @@
 		"answer": {
 			"index": 3,
 			"incorrect": "You clearly don't understand this game",
-			"correct": "It's about to be blown off it's hinges"
+			"correct": "It's about to be blown off it's hinges..."
 		}
 	},
 	{
@@ -124,7 +154,7 @@
 		"options": ["Positive.", "Actually I've changed my mind", "Misclicked, oops", "On second thought, we can go why not"],
 		"submit": "Reconsidering...",
 		"answer": {
-			"index": 1,
+			"index": 0,
 			"incorrect": "end quiz",
 			"correct": "c'mon"
 		}
@@ -135,8 +165,8 @@
 		"submit": "pleeeeeaaaaaaaaaasssseeeeee",
 		"answer": {
 			"index": 2,
-			"incorrect": "end quiz",
-			"correct": "whhhhhhhyyyyyyyyyyyyyyyyy"
+			"incorrect": "whhhhhhhyyyyyyyyyyyyyyyyy",
+			"correct": "end quiz"
 		}
 	},
 	{

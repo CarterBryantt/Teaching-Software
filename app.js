@@ -124,6 +124,7 @@ function setup() {
 		let questionOptions = questions[i].children[1].children;
 		for (let j = 0; j < questionOptions.length; j++) {
 			questionOptions[j].addEventListener('click', () => {
+				if (i != activeQuestion) return;
 				selectedAnswer = j;
 				questionOptions[j].style.setProperty('--before-content', "\'radio_button_checked\'");
 				for (let k = 0; k < questionOptions.length; k++) {
@@ -138,7 +139,7 @@ function setup() {
 	
 	for (let i = 0; i < document.querySelectorAll('.submit-button').length; i++) {
 		document.querySelectorAll('.submit-button')[i].addEventListener('click', () => {
-			if (!selectedAnswer) return;
+			if (selectedAnswer == undefined) return;
 			if (i == activeQuestion) {
 				let answerResponses = answers[activeQuestion].children;
 				if ((selectedAnswer != answerIndicies[activeQuestion] && answerResponses[0].innerHTML == 'end quiz') || (selectedAnswer == answerIndicies[activeQuestion] && answerResponses[1].innerHTML == 'end quiz')) {
@@ -156,7 +157,7 @@ function setup() {
 					answerResponses[1].style.display = "block";
 				}
 				answers[activeQuestion].style.display = "block";
-	
+
 				activeQuestion++;
 				updateQuiz();
 			}
