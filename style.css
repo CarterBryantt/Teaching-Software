@@ -66,11 +66,13 @@ body {
 	background-color: var(--option-background);
 
 	color: var(--question-text);
+}
 
+.option-interact {
 	cursor: pointer;
 }
 
-.question > ol > li:hover {
+.option-interact:hover {
 	filter: brightness(90%);
 }
 
@@ -108,15 +110,17 @@ body {
 	background-color: var(--button-background);
 
 	color: var(--button-text);
+}
 
+.button-interact {
 	cursor: pointer;
 }
 
-.button:hover {
+.button-interact:hover {
 	filter: brightness(115%);
 }
 
-.button:active {
+.button-interact:active {
 	filter: brightness(90%);
 }
 

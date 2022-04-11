@@ -53,6 +53,7 @@ let activeQuestion = 0;
 let selectedAnswer;
 let answers;
 let endScreens;
+let buttons;
 
 function parseQuiz(json) {
 	endScreens = json[json.length-1];
@@ -70,13 +71,14 @@ function parseQuiz(json) {
 			let orderedList = document.createElement('ol');
 			for (let i = 0; i < object.options.length; i++) {
 				let listItem = document.createElement('li');
+				listItem.classList.add('option-interact')
 				listItem.innerHTML = object.options[i];
 				orderedList.appendChild(listItem);
 			}
 			container.appendChild(orderedList);
 
 			let submit = document.createElement('div');
-			submit.classList.add('submit-button', 'button');
+			submit.classList.add('submit-button', 'button', 'button-interact');
 			submit.innerHTML = "<span class=\"material-icons-outlined\">stars</span>" + object.submit;
 			container.appendChild(submit);
 			
@@ -104,9 +106,28 @@ function parseQuiz(json) {
 	setup();
 }
 
+// function lerp(value, target, increment) {
+// 	console.log(value, target)
+// 	value += increment;
+// 	window.scrollTo(0, value); 
+// 	if (value >= target) {
+// 		value = target; // Just incase it goes over
+// 		return value;
+// 	}
+// 	return setTimeout(() => lerp(value, target, increment), 1);
+// }
+
 function updateQuiz() {
 	selectedAnswer = undefined;
 	for (let i = 0; i < questions.length; i++) {
+		if (i < activeQuestion) {
+			buttons[i].classList.remove('button-interact');
+			let questionOptions = questions[i].children[1].children;
+			for (let j = 0; j < questionOptions.length; j++) {
+				questionOptions[j].classList.remove('option-interact');
+			}
+		}
+
 		if (i <= activeQuestion) {
 			questions[i].style.display = "block";
 			continue;
@@ -114,12 +135,15 @@ function updateQuiz() {
 
 		questions[i].style.display = "none";
 	}
-	window.scrollTo(0, document.body.scrollHeight);
+	// console.log("scroll", document.body.scrollHeight)
+	// lerp(0, 904, 1);
+	window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
 function setup() {
 	questions = document.querySelectorAll('.question');
 	answers = document.querySelectorAll('.answer');
+	buttons = document.querySelectorAll('.button');
 	
 	for (let i = 0; i < questions.length; i++) {
 		let questionOptions = questions[i].children[1].children;
