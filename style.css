@@ -3,12 +3,16 @@
 
 	--question-border: #5E3A53;
 	--question-background: #A15666;
+	--question-null: #696969;
 	--question-text: #c7c0ce;
 	--question-width: 100%;
 	--question-height: 40px;
 
 	--option-border: #5E3A53;
 	--option-background: #A15666;
+	--option-correct: #3daf5a;
+	--option-incorrect: #cc3b3b;
+	--option-null: #696969;
 	--option-text: #c7c0ce;
 	--option-width: 90%;
 	--option-height: 25px;
@@ -16,9 +20,10 @@
 	--answer-border: #5E3A53;
 	--answer-background: #A15666;
 	--answer-text: #c7c0ce;
-	--answer-width: 80%;
+	--answer-width: 70%;
 
 	--button-background: #A15666;
+	--button-null: #696969;
 	--button-text: #c7c0ce;
 
 	--end-screen-background: #ffffff44;

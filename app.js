@@ -118,13 +118,21 @@ function parseQuiz(json) {
 // }
 
 function updateQuiz() {
-	selectedAnswer = undefined;
 	for (let i = 0; i < questions.length; i++) {
+
 		if (i < activeQuestion) {
+			questions[i].children[0].style.backgroundColor = 'var(--question-null)';
 			buttons[i].classList.remove('button-interact');
+			buttons[i].style.backgroundColor = 'var(--button-null)';
 			let questionOptions = questions[i].children[1].children;
 			for (let j = 0; j < questionOptions.length; j++) {
 				questionOptions[j].classList.remove('option-interact');
+
+				if (i == activeQuestion - 1) {
+					questionOptions[j].style.backgroundColor = 'var(--option-null)';
+					questionOptions[answerIndicies[i]].style.backgroundColor = 'var(--option-correct)';
+					questionOptions[selectedAnswer].style.backgroundColor = selectedAnswer == answerIndicies[i] ? 'var(--option-correct)' : 'var(--option-incorrect)';
+				} // Color last question's options
 			}
 		}
 
@@ -135,8 +143,9 @@ function updateQuiz() {
 
 		questions[i].style.display = "none";
 	}
-	// console.log("scroll", document.body.scrollHeight)
-	// lerp(0, 904, 1);
+
+	selectedAnswer = undefined;
+
 	window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
