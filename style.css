@@ -44,6 +44,7 @@ body {
 
 .question {
 	width: 80%;
+	margin: 1em 0px;
 }
 
 .question > h3 {
@@ -90,7 +91,6 @@ body {
 .answer {
 	display: none;
 	width: var(--answer-width);
-	margin: 1em 0px;
 	padding: 0px 7px;
 
 	border: 2px solid var(--answer-border);

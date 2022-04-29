@@ -1,51 +1,8 @@
-// function createQuiz() {
-// 	let quizDivs = document.querySelector('.quiz').children;
-
-// 	let quiz = [];
-// 	for (let i = 0; i < quizDivs.length; i++) {
-// 		if (quizDivs[i].classList.contains('question')) {
-// 			let children = quizDivs[i].children;
-// 			let question = {
-// 				"question": children[0].innerHTML,
-// 				"options": []
-// 			}
-// 			for (let i = 1; i < children.length; i++) {
-// 				question.options.push(children[i].innerHTML);
-// 			}
-// 			quiz.push(question);
-// 		} else if (quizDivs[i].classList.contains('text')) {
-// 			let text = {
-// 				"text": quizDivs[i].innerHTML
-// 			}
-// 			quiz.push(text);
-// 		}
-// 	}
-
-// 	return quiz;
-// }
-
-// function downloadJSON(object, fileName) {
-// 	var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(object));
-// 	var dlAnchorElem = document.createElement('a');
-// 	dlAnchorElem.setAttribute("href", dataStr);
-// 	dlAnchorElem.setAttribute("download", fileName + "application/json");
-// 	document.body.appendChild(dlAnchorElem);
-// 	dlAnchorElem.click();
-// 	dlAnchorElem.remove();
-// }
-
-// document.getElementById('select-quiz-button').onclick = () => document.getElementById('select-quiz-handler').click(); // Select File Button
-// document.getElementById('select-quiz-handler').onchange = (e) => document.getElementById('selected-file').innerHTML = e.target.files[0].name;
-// document.getElementById('import-quiz-button').onclick = () => {
-// 	let fileReader = new FileReader()
-// 	fileReader.onload = (e) => parseQuiz(JSON.parse(e.target.result));
-// 	fileReader.readAsText(document.getElementById('select-quiz-handler').files[0]);
-// }; // Import File
-
-// let jsonQuiz = JSON.stringify(createQuiz());
-// downloadJSON(jsonQuiz, "new-quiz");
-
-fetch("./config.json").then(response => response.json()).then(jsondata => parseQuiz(jsondata));
+let questionCount = 10;
+let difficulties = ["easy", "medium", "hard"];
+let types = ["multiple", "boolean"]
+let url = `https://opentdb.com/api.php?amount=${questionCount}&category=9&difficulty=${difficulties[1]}&type=${types[0]}`;
+fetch(url).then(response => response.json()).then(jsondata => parseQuiz(jsondata));
 
 let answerIndicies = [];
 let questions
@@ -55,67 +12,69 @@ let answers;
 let endScreens;
 let buttons;
 
+let randomSubmitPhrases = ["Shoot for the stars", "I think I've got it!", "I'm feeling lucky!", "I know this one!", "Got it!", "Clear as day.", "For the big bucks!", "Show me the money!"];
+
+function shuffleArray(arr) {
+	let currentIndex = arr.length;
+	let randomIndex;
+
+	while (currentIndex != 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		[arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]];
+	}
+
+	return arr;
+}
+
 function parseQuiz(json) {
-	endScreens = json[json.length-1];
 	let quiz = document.createElement('div');
 	quiz.classList.add('quiz');
-	for (let i = 0; i < json.length; i++) {
-		let object = json[i];
-		if (object.hasOwnProperty("question")) {
-			let container = document.createElement('div');
-			container.classList.add('question');
-			let question = document.createElement('h3');
-			question.innerHTML = object.question;
-			container.appendChild(question);
-			
-			let orderedList = document.createElement('ol');
-			for (let i = 0; i < object.options.length; i++) {
-				let listItem = document.createElement('li');
-				listItem.classList.add('option-interact')
-				listItem.innerHTML = object.options[i];
-				orderedList.appendChild(listItem);
-			}
-			container.appendChild(orderedList);
+	for (let i = 0; i < json.results.length; i++) {
+		let result = json.results[i];
 
-			let submit = document.createElement('div');
-			submit.classList.add('submit-button', 'button', 'button-interact');
-			submit.innerHTML = "<span class=\"material-icons-outlined\">stars</span>" + object.submit;
-			container.appendChild(submit);
-			
-			quiz.appendChild(container);
+		let container = document.createElement('div')
+		container.classList.add('question');
 
-			answerIndicies.push(object.answer.index);
-			let answer = document.createElement('div');
-			answer.classList.add('answer');
-			let incorrect = document.createElement('p');
-			incorrect.classList.add('incorrect');
-			incorrect.innerHTML = object.answer.incorrect;
-			answer.appendChild(incorrect);
-			let correct = document.createElement('p');
-			correct.classList.add('correct');
-			correct.innerHTML = object.answer.correct;
-			answer.appendChild(correct);
-			quiz.appendChild(answer);
-		} else if (object.hasOwnProperty("text")) {
-			let text = document.createElement('p');
-			text.innerHTML = object.text;
-			document.body.appendChild(text);
+		let question = document.createElement('h3');
+		question.innerHTML = result.question;
+
+		container.appendChild(question);
+		
+		let orderedList = document.createElement('ol');
+		result.incorrect_answers.push(result.correct_answer)
+		let shuffledQuestions = shuffleArray(result.incorrect_answers);
+		for (let i = 0; i < shuffledQuestions.length; i++) {
+			let listItem = document.createElement('li');
+			listItem.classList.add('option-interact');
+			listItem.innerHTML = shuffledQuestions[i];
+			orderedList.appendChild(listItem);
 		}
+		
+		container.appendChild(orderedList);
+		let submit = document.createElement('div');
+		submit.classList.add('submit-button', 'button', 'button-interact');
+		submit.innerHTML = "<span class=\"material-icons-outlined\">stars</span>" + randomSubmitPhrases[Math.floor(Math.random() * randomSubmitPhrases.length)];
+		container.appendChild(submit);
+
+		quiz.appendChild(container);
+		answerIndicies.push(shuffledQuestions.indexOf(result.correct_answer));
+		// let answer = document.createElement('div');
+		// answer.classList.add('answer');
+		// let incorrect = document.createElement('p');
+		// incorrect.classList.add('incorrect');
+		// incorrect.innerHTML = result.answer.incorrect;
+		// answer.appendChild(incorrect);
+		// let correct = document.createElement('p');
+		// correct.classList.add('correct');
+		// correct.innerHTML = result.answer.correct;
+		// answer.appendChild(correct);
+		// quiz.appendChild(answer);
 	}
 	document.body.appendChild(quiz);
 	setup();
 }
-
-// function lerp(value, target, increment) {
-// 	console.log(value, target)
-// 	value += increment;
-// 	window.scrollTo(0, value); 
-// 	if (value >= target) {
-// 		value = target; // Just incase it goes over
-// 		return value;
-// 	}
-// 	return setTimeout(() => lerp(value, target, increment), 1);
-// }
 
 function updateQuiz() {
 	for (let i = 0; i < questions.length; i++) {
@@ -175,23 +134,6 @@ function setup() {
 		document.querySelectorAll('.submit-button')[i].addEventListener('click', () => {
 			if (selectedAnswer == undefined) return;
 			if (i == activeQuestion) {
-				let answerResponses = answers[activeQuestion].children;
-				if ((selectedAnswer != answerIndicies[activeQuestion] && answerResponses[0].innerHTML == 'end quiz') || (selectedAnswer == answerIndicies[activeQuestion] && answerResponses[1].innerHTML == 'end quiz')) {
-					let index = activeQuestion - (questions.length - endScreens.length);
-					console.log("works", index)
-					let endScreen = document.createElement('div');
-					endScreen.classList.add('end-screen');
-					endScreen.innerHTML = endScreens[index].text;
-					document.body.appendChild(endScreen);
-					return;
-				}
-				if (selectedAnswer != answerIndicies[activeQuestion]) {
-					answerResponses[0].style.display = "block";
-				} else {
-					answerResponses[1].style.display = "block";
-				}
-				answers[activeQuestion].style.display = "block";
-
 				activeQuestion++;
 				updateQuiz();
 			}
