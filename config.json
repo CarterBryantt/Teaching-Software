@@ -51,11 +51,11 @@
 	},
 	{
 		"question": "A bit harder. How long have been dating Carter?",
-		"options": ["8 months", "10 months", "9 months", "7 months"],
+		"options": ["14 months", "16 months", "17 months", "15 months"],
 		"submit":"Got it!",
 		"answer": {
 			"index": 2,
-			"incorrect": "Fair enough, that one was hard. 9 months.",
+			"incorrect": "Fair enough, that one was hard. 16 months.",
 			"correct": "Nicely done."
 		}
 	},

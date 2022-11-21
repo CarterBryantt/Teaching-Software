@@ -30,16 +30,6 @@
 		}
 	},
 	{
-		"question": "How sexy is Carter?",
-		"options": ["Makes my knees weak", "Smokin' 🔥", "Eh hes alright", "I'd travel the world for that booty 😋"],
-		"submit": "This is lightweight!",
-		"answer": {
-			"index": 2,
-			"incorrect": "aw gosh",
-			"correct": ">:("
-		}
-	},
-	{
 		"question": "Who's the President",
 		"options": ["Your mom", "Joe Biden", "Chris Hemsworth", "Heck if I know"],
 		"submit": "I'd like to buy a vowel!",

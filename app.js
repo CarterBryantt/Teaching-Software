@@ -106,17 +106,6 @@ function parseQuiz(json) {
 	setup();
 }
 
-// function lerp(value, target, increment) {
-// 	console.log(value, target)
-// 	value += increment;
-// 	window.scrollTo(0, value); 
-// 	if (value >= target) {
-// 		value = target; // Just incase it goes over
-// 		return value;
-// 	}
-// 	return setTimeout(() => lerp(value, target, increment), 1);
-// }
-
 function updateQuiz() {
 	for (let i = 0; i < questions.length; i++) {
 
